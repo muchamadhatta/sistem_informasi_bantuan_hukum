@@ -1,0 +1,100 @@
+<section class="content-header">
+	<div class="container-fluid">
+		<div class="row mb-2">
+			<div class="col-sm-6">
+				<h1>Hasil Pertemuan</h1>
+			</div>
+			<div class="col-sm-6">
+				<ol class="breadcrumb float-sm-right">
+					<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+					<li class="breadcrumb-item active">Hasil Pertemuan</li>
+				</ol>
+			</div>
+		</div>
+	</div><!-- /.container-fluid -->
+
+</section>
+
+
+
+					
+					
+						
+						
+						
+
+<?php 
+                    foreach($row->result() as $key => $data) { ?>
+<!-- Main content -->
+<section class="content">
+<?php $this->view('massages')  ?>
+	<!-- general form elements -->
+	<div class="col col-md-12">
+
+		<div class="card card-success">
+			<div class="card-header">
+				<h3 class="card-title">Hasil Pertemuan</h3>
+			</div>
+			<!-- /.card-header -->
+			<!-- form start -->
+			<?php echo form_open_multipart('jadwal/process') ?>
+				<div class="card-body">
+				<div class="form-group ">
+						
+						<input type="hidden" name="id2" value="<?=$data->id_konsultasi?>">
+						<input type="hidden" name="status" value="Selesai">
+						<input type="hidden" name="alamat_pertemuan" value="<?=$data->alamat_pertemuan?>" class="form-control"
+							id="InputJudul" required>
+					</div>
+					<div class="form-group">
+						
+						<input type="hidden" name="jam" value="<?=$data->jam?>" class="form-control"
+							id="InputStatus">
+					</div>
+					<div class="form-group">
+						
+						<input type="hidden" name="tanggal" value="<?=$data->tanggal?>" class="form-control" id="InputAlamat"
+							placeholder="Input Tanggal Lahir">
+					</div>
+
+
+					<div class="form-group">
+						<label for="InputStatus">Hasil Pertemuan</label>
+						<textarea type="text" name="hasil_pertemuan" rows="4"  class="form-control"
+							id="InputStatus" placeholder="tulis hasil pertemuan"><?=$data->hasil_pertemuan?></textarea>
+					</div>
+					<div class="form-group">
+						<label for="InputStatus">Keterangan</label>
+						<textarea type="text" name="keterangan" rows="4"  class="form-control"
+							id="InputStatus" placeholder="tulis keterangan"><?=$data->keterangan?></textarea>
+					</div>
+
+					<!-- /.card-body -->
+					<div class="card-footer">
+						<button type="submit" name="update" class="btn btn-success">
+							<i class="fa fa-paper-plane"></i> Save
+						</button>
+						
+					</div>
+			<?php echo form_close() ?>
+		</div>
+		<!-- /.card -->
+	</div>
+
+	</div>
+	</div>
+	</div>
+
+	<!-- /.card-body -->
+	</div>
+
+	<!-- /.card -->
+	</div>
+	<!-- /.col -->
+	</div>
+
+	<!-- /.row -->
+</section>
+<?php } ?>
+
+
